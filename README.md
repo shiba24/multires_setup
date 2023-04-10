@@ -5,7 +5,14 @@
 # Install OpenEB (v3.1.2)
 
 
+
+
+
+
+
 # setup metavision_ros_driver
+
+
 
 - catkin_simple
 - event_array_msgs
@@ -22,19 +29,25 @@
 Prerequisites
 
 ```
-sudo apt-get install ros-noetic-pybind11-catkin
-
+sudo apt install ros-noetic-pybind11-catkin
+sudo apt install python3-wstool
 ```
+
+
 
 
 
 Clone and prepare.
 
 ```
+source /opt/ros/noetic/setup.zsh
+
 mkdir -p ~/metavision_ros_driver_ws/src
 cd ~/metavision_ros_driver_ws
 git clone git@github.com:berndpfrommer/metavision_ros_driver src/metavision_ros_driver
 wstool init src src/metavision_ros_driver/metavision_ros_driver.rosinstall
+
+git clone -b open_bag_later git@github.com:berndpfrommer/nodelet_rosbag.git src/nodelet_rosbag
 
 pkg=event_array_tools
 cd ~/metavision_ros_driver_ws
@@ -65,3 +78,14 @@ Build.
 catkin config -DCMAKE_BUILD_TYPE=RelWithDebInfo  # (optionally add -DCMAKE_EXPORT_COMPILE_COMMANDS=1)
 catkin build
 ```
+
+
+# Everytime
+
+```
+source ./devel/setup.zsh 
+
+./launch.sh  # this comes from this repository
+```
+
+
